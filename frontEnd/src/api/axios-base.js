@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '../store'
-const APIUrl = 'http://127.0.0.1/'
+const APIUrl = 'http://127.0.0.1/api'
 
 const axiosBase = axios.create({
   baseURL: APIUrl,
@@ -31,6 +31,8 @@ getAPI.interceptors.response.use(undefined, function (err) {
         })
       })
       .catch(err => {
+
+        console.log("errou aqui");
         return Promise.reject(err)
       })
   }

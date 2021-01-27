@@ -30,8 +30,9 @@
         getAPI.get('/mods/', { headers: { Authorization: `Bearer ${this.$store.state.accessToken}` } }) // proof that your access token is still valid; if not the
         // axios getAPI response interceptor will attempt to get a new  access token from the server. check out ../api/axios-base.js getAPI instance response interceptor
           .then(response => {
+            console.log(response);// store the response data in store
             console.log('GetAPI successfully got the mods')
-            this.$store.state.APIData = response.data // store the response data in store
+            this.$store.state.APIData = response.data 
           })
           .catch(err => { // refresh token expired or some other error status
             console.log(err)

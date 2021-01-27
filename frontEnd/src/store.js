@@ -34,7 +34,7 @@ export default new Vuex.Store({
     // run the below action to get a new access token on expiration
     refreshToken (context) {
       return new Promise((resolve, reject) => {
-        axiosBase.post('/api/token/refresh/', {
+        axiosBase.post('/token/refresh/', {
           refresh: context.state.refreshToken
         }) // send the stored refresh token to the backend API
           .then(response => { // if API sends back new access and refresh token update the store
@@ -68,7 +68,7 @@ export default new Vuex.Store({
     logoutUser (context) {
       if (context.getters.loggedIn) {
         return new Promise((resolve, reject) => {
-          axiosBase.post('/api/token/logout/')
+          axiosBase.post('/token/logout/')
             .then(response => {
               localStorage.removeItem('access_token')
               localStorage.removeItem('refresh_token')
@@ -86,7 +86,7 @@ export default new Vuex.Store({
     loginUser (context, credentials) {
       return new Promise((resolve, reject) => {
         // send the username and password to the backend API:
-        axiosBase.post('/api/token/', {
+        axiosBase.post('/token/', {
           username: credentials.username,
           password: credentials.password
         })

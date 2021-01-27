@@ -26,7 +26,7 @@ SECRET_KEY = '%$@&56qrx4lzsz^#x4!t@bfps85b+!_ry6=&$!1(rud9&%%_lb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -132,6 +132,8 @@ REST_FRAMEWORK = {
 # the specified source only
 CORS_ALLOWED_ORIGINS = [
     "http://localhost",
+    "http://127.0.0.1",
+    "http://vue-auth-frontend",
 ]
 
 # allow all requests containing any of the default headers(as in django docs) or content-type header
