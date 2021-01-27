@@ -1,8 +1,8 @@
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import generics
-from DjangoRestAuth.models import Mods
-from DjangoRestAuth.serializers import ModSerializer
+from .models import Mods
+from .serializers import ModSerializer
 
 
 # View for 'Mods' model

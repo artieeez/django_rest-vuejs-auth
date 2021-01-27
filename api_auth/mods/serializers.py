@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from DjangoRestAuth.models import Mods
+from .models import Mods
 
 
 # output serializer class for  'Mods' model

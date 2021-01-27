@@ -1,0 +1,35 @@
+version: "3.9"
+   
+services:
+  vue-auth-proxy:
+    image: nginx:1.17.10
+    container_name: vue-auth-proxy
+    depends_on:
+        - vue-auth-frontend
+        - vue-auth-backend
+    volumes:
+      - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+  vue-auth-backend:
+    image: vue-auth-backend
+    container_name: vue-auth-backend
+    build:
+      context: ./api_auth
+      dockerfile: Dockerfile
+    volumes:
+      - ./api_auth:/app
+    restart: on-failure
+    
+  vue-auth-frontend:
+    image: vue-auth-frontend
+    container_name: vue-auth-frontend
+    build:
+      context: ./frontEnd
+      dockerfile: Dockerfile
+    depends_on:
+      - vue-auth-backend
+    volumes:
+      - './frontEnd:/app'
+      - '/app/node_modules'
+    restart: on-failure
